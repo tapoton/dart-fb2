@@ -1,4 +1,6 @@
+import './book_cite.dart';
 import './book_elements.dart';
+import './book_paragraph.dart';
 import '../utils/one_of.dart';
 
 class BookAnnotationElement extends OneOf6<BookParagraph, BookPoem, BookCite,

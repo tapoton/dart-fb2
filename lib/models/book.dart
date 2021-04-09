@@ -6,13 +6,16 @@ import './book_stylesheet.dart';
 class Book {
   final BookStylesheet? stylesheet;
   final BookDescription description;
-  final List<BookBody> body;
+  final List<BookBody> bodies;
   final List<BookBinary> binaries;
 
   const Book({
     this.stylesheet,
     required this.description,
-    required this.body,
+    required this.bodies,
     this.binaries = const [],
-  }) : assert(body.length > 0);
+  }) : assert(bodies.length > 0);
+
+  BookBody get mainBody => bodies.first;
+  BookBody? get notes => bodies.firstWhere((body) => body.name == 'notes');
 }

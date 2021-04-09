@@ -1,8 +1,4 @@
-class BookParagraph {}
-
 class BookPoem {}
-
-class BookCite {}
 
 class BookSubtitle {}
 
