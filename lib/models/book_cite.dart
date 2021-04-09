@@ -1,21 +1,23 @@
-import './book_author.dart';
-import './book_elements.dart';
+import './book_empty_line.dart';
 import './book_paragraph.dart';
+import './book_poem.dart';
+import './book_subtitle.dart';
+import './book_table.dart';
 import '../utils/one_of.dart';
 
 class BookCite {
   final List<BookCiteContent> content;
-  final List<BookAuthor> authors;
+  final List<BookParagraph> textAuthor;
 
-  BookCite({
+  const BookCite({
     required this.content,
-    required this.authors,
+    this.textAuthor = const [],
   });
 }
 
 class BookCiteContent extends OneOf5<BookParagraph, BookSubtitle, BookEmptyLine,
     BookPoem, BookTable> {
-  BookCiteContent({
+  const BookCiteContent({
     BookParagraph? paragraph,
     BookSubtitle? subtitle,
     BookEmptyLine? emptyLine,

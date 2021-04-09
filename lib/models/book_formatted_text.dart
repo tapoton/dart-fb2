@@ -3,7 +3,7 @@ import '../utils/one_of.dart';
 
 class BookFormattedTextContent
     extends OneOf3<BookFormattedText, BookImage, String> {
-  BookFormattedTextContent({
+  const BookFormattedTextContent({
     BookFormattedText? formattedText,
     BookImage? image,
     String? text,
@@ -13,14 +13,14 @@ class BookFormattedTextContent
 abstract class BookFormattedText {
   final List<BookFormattedTextContent> contents;
 
-  BookFormattedText(this.contents);
+  const BookFormattedText(this.contents);
 }
 
 class BookStyledText extends BookFormattedText {
   final String? language;
   final String name;
 
-  BookStyledText({
+  const BookStyledText({
     this.language,
     required this.name,
     required List<BookFormattedTextContent> contents,
@@ -28,35 +28,37 @@ class BookStyledText extends BookFormattedText {
 }
 
 class BookStrongText extends BookFormattedText {
-  BookStrongText(List<BookFormattedTextContent> contents) : super(contents);
+  const BookStrongText(List<BookFormattedTextContent> contents)
+      : super(contents);
 }
 
 class BookEmphasisText extends BookFormattedText {
-  BookEmphasisText(List<BookFormattedTextContent> contents) : super(contents);
+  const BookEmphasisText(List<BookFormattedTextContent> contents)
+      : super(contents);
 }
 
 class BookStrikethroughText extends BookFormattedText {
-  BookStrikethroughText(List<BookFormattedTextContent> contents)
+  const BookStrikethroughText(List<BookFormattedTextContent> contents)
       : super(contents);
 }
 
 class BookSubText extends BookFormattedText {
-  BookSubText(List<BookFormattedTextContent> contents) : super(contents);
+  const BookSubText(List<BookFormattedTextContent> contents) : super(contents);
 }
 
 class BookSupText extends BookFormattedText {
-  BookSupText(List<BookFormattedTextContent> contents) : super(contents);
+  const BookSupText(List<BookFormattedTextContent> contents) : super(contents);
 }
 
 class BookCodeText extends BookFormattedText {
-  BookCodeText(List<BookFormattedTextContent> contents) : super(contents);
+  const BookCodeText(List<BookFormattedTextContent> contents) : super(contents);
 }
 
 class BookLinkText extends BookFormattedText {
   final String? type;
   final String href;
 
-  BookLinkText({
+  const BookLinkText({
     this.type,
     required this.href,
     required List<BookFormattedTextContent> contents,

@@ -1,23 +1,23 @@
-import './book_author.dart';
 import './book_cite.dart';
-import './book_elements.dart';
+import 'book_empty_line.dart';
 import './book_paragraph.dart';
+import './book_poem.dart';
 import '../utils/one_of.dart';
 
 class BookEpigraph {
   final String? id;
   final List<BookEpigraphPart> parts;
-  final List<BookAuthor> authors;
+  final List<BookParagraph> textAuthor;
 
   const BookEpigraph({
     this.id,
     this.parts = const [],
-    this.authors = const [],
+    this.textAuthor = const [],
   });
 
   @override
   String toString() {
-    return [parts.join('\n'), authors.join('\n')]
+    return [parts.join('\n'), textAuthor.join('\n')]
         .where((text) => text.isNotEmpty)
         .join('\n');
   }
@@ -25,7 +25,7 @@ class BookEpigraph {
 
 class BookEpigraphPart
     extends OneOf4<BookParagraph, BookPoem, BookCite, BookEmptyLine> {
-  BookEpigraphPart({
+  const BookEpigraphPart({
     BookParagraph? paragraph,
     BookPoem? poem,
     BookCite? cite,

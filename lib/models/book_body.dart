@@ -1,16 +1,20 @@
 import './book_annotation.dart';
-import './book_elements.dart';
+import './book_cite.dart';
+import './book_empty_line.dart';
 import './book_epigraph.dart';
 import './book_image.dart';
-import '../utils/one_of.dart';
 import './book_paragraph.dart';
-import './book_cite.dart';
+import './book_poem.dart';
+import './book_subtitle.dart';
+import './book_table.dart';
+import './book_title.dart';
+import '../utils/one_of.dart';
 
 class BookBody {
   final String? name;
   final String? language;
   final BookImage? image;
-  final String? title;
+  final BookTitle? title;
   final List<BookEpigraph> epigraphs;
   final List<BookBodySection> sections;
 
@@ -27,7 +31,7 @@ class BookBody {
 class BookBodySection {
   final String? id;
   final String? language;
-  final String? title;
+  final BookTitle? title;
   final List<BookEpigraph> epigraphs;
   final BookImage? image;
   final BookAnnotation? annotation;

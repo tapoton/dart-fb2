@@ -1,12 +1,12 @@
 import './book_formatted_text.dart';
 
-class BookParagraph {
+class BookSubtitle {
   final String? id;
   final String? style;
   final String? language;
   final List<BookFormattedTextContent> content;
 
-  const BookParagraph({
+  const BookSubtitle({
     this.id,
     this.style,
     this.language,

@@ -2,6 +2,7 @@ import './book_annotation.dart';
 import './book_author.dart';
 import './book_coverpage.dart';
 import './book_date.dart';
+import './book_title.dart';
 
 class BookDescription {
   final BookTitleInfo titleInfo;
@@ -22,7 +23,7 @@ class BookDescription {
 class BookTitleInfo {
   final List<String> genres;
   final List<BookAuthor> authors;
-  final String bookTitle;
+  final BookTitle bookTitle;
   final BookAnnotation? annotation;
   final String? keywords;
   final BookDate? date;
