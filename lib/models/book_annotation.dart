@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import './book_cite.dart';
 import './book_empty_line.dart';
 import './book_paragraph.dart';
@@ -18,7 +20,7 @@ class BookAnnotationElement extends OneOf6<BookParagraph, BookPoem, BookCite,
   }) : super(paragraph, poem, cite, subtitle, emptyLine, table);
 }
 
-class BookAnnotation {
+class BookAnnotation with EquatableMixin {
   final List<BookAnnotationElement> elements;
 
   const BookAnnotation(this.elements);
@@ -27,4 +29,7 @@ class BookAnnotation {
   String toString() {
     return elements.join('\n');
   }
+
+  @override
+  List<Object?> get props => [elements];
 }

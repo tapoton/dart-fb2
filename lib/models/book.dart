@@ -1,9 +1,11 @@
+import 'package:equatable/equatable.dart';
+
 import './book_binary.dart';
 import './book_body.dart';
 import './book_description.dart';
 import './book_stylesheet.dart';
 
-class Book {
+class Book with EquatableMixin {
   final BookStylesheet? stylesheet;
   final BookDescription description;
   final List<BookBody> bodies;
@@ -18,4 +20,7 @@ class Book {
 
   BookBody get mainBody => bodies.first;
   BookBody? get notes => bodies.firstWhere((body) => body.name == 'notes');
+
+  @override
+  List<Object?> get props => [stylesheet, description, bodies, binaries];
 }

@@ -1,4 +1,6 @@
-class BookAuthor {
+import 'package:equatable/equatable.dart';
+
+class BookAuthor with EquatableMixin {
   final String? firstName;
   final String? middleName;
   final String? lastName;
@@ -16,4 +18,8 @@ class BookAuthor {
     this.email = const [],
     this.id,
   });
+
+  @override
+  List<Object?> get props =>
+      [firstName, middleName, lastName, nickname, homepage, email, id];
 }

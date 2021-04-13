@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import './book_image.dart';
 import '../utils/one_of.dart';
 
@@ -10,10 +12,13 @@ class BookFormattedTextContent
   }) : super(formattedText, image, text);
 }
 
-abstract class BookFormattedText {
+abstract class BookFormattedText with EquatableMixin {
   final List<BookFormattedTextContent> contents;
 
   const BookFormattedText(this.contents);
+
+  @override
+  List<Object?> get props => [contents];
 }
 
 class BookStyledText extends BookFormattedText {
@@ -25,6 +30,9 @@ class BookStyledText extends BookFormattedText {
     required this.name,
     required List<BookFormattedTextContent> contents,
   }) : super(contents);
+
+  @override
+  List<Object?> get props => super.props + [language, name];
 }
 
 class BookStrongText extends BookFormattedText {
@@ -65,4 +73,7 @@ class BookLinkText extends BookFormattedText {
   }) : super(contents);
 
   bool get isNote => type == 'note';
+
+  @override
+  List<Object?> get props => super.props + [type, href];
 }

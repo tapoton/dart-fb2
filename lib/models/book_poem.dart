@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import './book_date.dart';
 import './book_epigraph.dart';
 import './book_formatted_text.dart';
@@ -5,7 +7,7 @@ import './book_paragraph.dart';
 import './book_subtitle.dart';
 import './book_title.dart';
 
-class BookPoem {
+class BookPoem with EquatableMixin {
   final String? id;
   final String? language;
 
@@ -24,9 +26,13 @@ class BookPoem {
     this.textAuthor = const [],
     this.date,
   });
+
+  @override
+  List<Object?> get props =>
+      [id, language, title, epigraphs, stanza, textAuthor, date];
 }
 
-class BookPoemStanza {
+class BookPoemStanza with EquatableMixin {
   final BookTitle? title;
   final BookSubtitle? subtitle;
   final List<BookPoemLine> lines;
@@ -36,6 +42,9 @@ class BookPoemStanza {
     this.subtitle,
     required this.lines,
   });
+
+  @override
+  List<Object?> get props => [title, subtitle, lines];
 }
 
 class BookPoemLine {

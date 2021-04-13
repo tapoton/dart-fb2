@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
-class BookBinary {
+import 'package:equatable/equatable.dart';
+
+class BookBinary with EquatableMixin {
   final String contentType;
   final String id;
 
@@ -11,4 +13,7 @@ class BookBinary {
     required this.id,
     required this.data,
   });
+
+  @override
+  List<Object?> get props => [contentType, id, data];
 }

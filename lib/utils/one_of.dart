@@ -1,6 +1,11 @@
-class OneOf2<T1, T2> {
+import 'package:equatable/equatable.dart';
+
+class OneOf2<T1, T2> extends Equatable {
   final T1? first;
   final T2? second;
+
+  const OneOf2(this.first, this.second)
+      : assert((first != null) != (second != null));
 
   bool get isFirst => first != null;
   bool get isSecond => second != null;
@@ -8,14 +13,19 @@ class OneOf2<T1, T2> {
 
   List<Type> get types => [T1, T2];
 
-  const OneOf2(this.first, this.second)
-      : assert((first != null) != (second != null));
+  @override
+  List<Object?> get props => [value];
 }
 
-class OneOf3<T1, T2, T3> {
+class OneOf3<T1, T2, T3> extends Equatable {
   final T1? first;
   final T2? second;
   final T3? third;
+
+  const OneOf3(this.first, this.second, this.third)
+      : assert(first != null && second == null && third == null ||
+            first == null && second != null && third == null ||
+            first == null && second == null && third != null);
 
   bool get isFirst => first != null;
   bool get isSecond => second != null;
@@ -24,25 +34,15 @@ class OneOf3<T1, T2, T3> {
 
   List<Type> get types => [T1, T2, T3];
 
-  const OneOf3(this.first, this.second, this.third)
-      : assert(first != null && second == null && third == null ||
-            first == null && second != null && third == null ||
-            first == null && second == null && third != null);
+  @override
+  List<Object?> get props => [value];
 }
 
-class OneOf4<T1, T2, T3, T4> {
+class OneOf4<T1, T2, T3, T4> extends Equatable {
   final T1? first;
   final T2? second;
   final T3? third;
   final T4? fourth;
-
-  bool get isFirst => first != null;
-  bool get isSecond => second != null;
-  bool get isThird => third != null;
-  bool get isFourth => fourth != null;
-  get value => first ?? second ?? third ?? fourth;
-
-  List<Type> get types => [T1, T2, T3, T4];
 
   const OneOf4(this.first, this.second, this.third, this.fourth)
       : assert(first != null &&
@@ -58,24 +58,25 @@ class OneOf4<T1, T2, T3, T4> {
                 third != null &&
                 fourth == null ||
             first == null && second == null && third == null && fourth != null);
-}
-
-class OneOf5<T1, T2, T3, T4, T5> {
-  final T1? first;
-  final T2? second;
-  final T3? third;
-  final T4? fourth;
-  final T5? fifth;
 
   bool get isFirst => first != null;
   bool get isSecond => second != null;
   bool get isThird => third != null;
   bool get isFourth => fourth != null;
-  bool get isFifth => fifth != null;
+  get value => first ?? second ?? third ?? fourth;
 
-  get value => first ?? second ?? third ?? fourth ?? fifth;
+  List<Type> get types => [T1, T2, T3, T4];
 
-  List<Type> get types => [T1, T2, T3, T4, T5];
+  @override
+  List<Object?> get props => [value];
+}
+
+class OneOf5<T1, T2, T3, T4, T5> extends Equatable {
+  final T1? first;
+  final T2? second;
+  final T3? third;
+  final T4? fourth;
+  final T5? fifth;
 
   const OneOf5(this.first, this.second, this.third, this.fourth, this.fifth)
       : assert(first != null &&
@@ -103,25 +104,28 @@ class OneOf5<T1, T2, T3, T4, T5> {
                 third == null &&
                 fourth == null &&
                 fifth != null);
-}
-
-class OneOf6<T1, T2, T3, T4, T5, T6> {
-  final T1? first;
-  final T2? second;
-  final T3? third;
-  final T4? fourth;
-  final T5? fifth;
-  final T6? sixth;
 
   bool get isFirst => first != null;
   bool get isSecond => second != null;
   bool get isThird => third != null;
   bool get isFourth => fourth != null;
   bool get isFifth => fifth != null;
-  bool get isSixth => sixth != null;
-  get value => first ?? second ?? third ?? fourth ?? fifth ?? sixth;
 
-  List<Type> get types => [T1, T2, T3, T4, T5, T6];
+  get value => first ?? second ?? third ?? fourth ?? fifth;
+
+  List<Type> get types => [T1, T2, T3, T4, T5];
+
+  @override
+  List<Object?> get props => [value];
+}
+
+class OneOf6<T1, T2, T3, T4, T5, T6> extends Equatable {
+  final T1? first;
+  final T2? second;
+  final T3? third;
+  final T4? fourth;
+  final T5? fifth;
+  final T6? sixth;
 
   const OneOf6(
       this.first, this.second, this.third, this.fourth, this.fifth, this.sixth)
@@ -161,16 +165,6 @@ class OneOf6<T1, T2, T3, T4, T5, T6> {
                 fourth == null &&
                 fifth == null &&
                 sixth != null);
-}
-
-class OneOf7<T1, T2, T3, T4, T5, T6, T7> {
-  final T1? first;
-  final T2? second;
-  final T3? third;
-  final T4? fourth;
-  final T5? fifth;
-  final T6? sixth;
-  final T7? seventh;
 
   bool get isFirst => first != null;
   bool get isSecond => second != null;
@@ -178,11 +172,22 @@ class OneOf7<T1, T2, T3, T4, T5, T6, T7> {
   bool get isFourth => fourth != null;
   bool get isFifth => fifth != null;
   bool get isSixth => sixth != null;
-  bool get isSeventh => seventh != null;
+  get value => first ?? second ?? third ?? fourth ?? fifth ?? sixth;
 
-  get value => first ?? second ?? third ?? fourth ?? fifth ?? sixth ?? seventh;
+  List<Type> get types => [T1, T2, T3, T4, T5, T6];
 
-  List<Type> get types => [T1, T2, T3, T4, T5, T6, T7];
+  @override
+  List<Object?> get props => [value];
+}
+
+class OneOf7<T1, T2, T3, T4, T5, T6, T7> extends Equatable {
+  final T1? first;
+  final T2? second;
+  final T3? third;
+  final T4? fourth;
+  final T5? fifth;
+  final T6? sixth;
+  final T7? seventh;
 
   const OneOf7(this.first, this.second, this.third, this.fourth, this.fifth,
       this.sixth, this.seventh)
@@ -235,4 +240,19 @@ class OneOf7<T1, T2, T3, T4, T5, T6, T7> {
                 fifth == null &&
                 sixth == null &&
                 seventh != null);
+
+  bool get isFirst => first != null;
+  bool get isSecond => second != null;
+  bool get isThird => third != null;
+  bool get isFourth => fourth != null;
+  bool get isFifth => fifth != null;
+  bool get isSixth => sixth != null;
+  bool get isSeventh => seventh != null;
+
+  get value => first ?? second ?? third ?? fourth ?? fifth ?? sixth ?? seventh;
+
+  List<Type> get types => [T1, T2, T3, T4, T5, T6, T7];
+
+  @override
+  List<Object?> get props => [value];
 }

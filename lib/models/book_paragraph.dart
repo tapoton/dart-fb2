@@ -1,6 +1,8 @@
+import 'package:equatable/equatable.dart';
+
 import './book_formatted_text.dart';
 
-class BookParagraph {
+class BookParagraph with EquatableMixin {
   final String? id;
   final String? style;
   final String? language;
@@ -12,4 +14,7 @@ class BookParagraph {
     this.language,
     this.content = const [],
   });
+
+  @override
+  List<Object?> get props => [id, style, language, content];
 }

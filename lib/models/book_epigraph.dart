@@ -1,10 +1,12 @@
+import 'package:equatable/equatable.dart';
+
 import './book_cite.dart';
 import 'book_empty_line.dart';
 import './book_paragraph.dart';
 import './book_poem.dart';
 import '../utils/one_of.dart';
 
-class BookEpigraph {
+class BookEpigraph with EquatableMixin {
   final String? id;
   final List<BookEpigraphPart> parts;
   final List<BookParagraph> textAuthor;
@@ -21,6 +23,9 @@ class BookEpigraph {
         .where((text) => text.isNotEmpty)
         .join('\n');
   }
+
+  @override
+  List<Object?> get props => [id, parts, textAuthor];
 }
 
 class BookEpigraphPart

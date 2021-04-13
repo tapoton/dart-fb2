@@ -1,10 +1,12 @@
+import 'package:equatable/equatable.dart';
+
 import './book_annotation.dart';
 import './book_author.dart';
 import './book_coverpage.dart';
 import './book_date.dart';
 import './book_title.dart';
 
-class BookDescription {
+class BookDescription with EquatableMixin {
   final BookTitleInfo titleInfo;
   final BookTitleInfo? sourceTitleInfo;
   final BookDocumentInfo documentInfo;
@@ -18,9 +20,13 @@ class BookDescription {
     this.publishInfo,
     this.customInfo = const [],
   });
+
+  @override
+  List<Object?> get props =>
+      [titleInfo, documentInfo, sourceTitleInfo, publishInfo, customInfo];
 }
 
-class BookTitleInfo {
+class BookTitleInfo with EquatableMixin {
   final List<String> genres;
   final List<BookAuthor> authors;
   final BookTitle bookTitle;
@@ -46,9 +52,24 @@ class BookTitleInfo {
     this.translators = const [],
     this.sequence = const [],
   });
+
+  @override
+  List<Object?> get props => [
+        genres,
+        authors,
+        bookTitle,
+        annotation,
+        keywords,
+        date,
+        coverpage,
+        language,
+        sourceLanguage,
+        translators,
+        sequence
+      ];
 }
 
-class BookSequenceInfo {
+class BookSequenceInfo with EquatableMixin {
   final String name;
   final int? number;
   final String? language;
@@ -58,9 +79,12 @@ class BookSequenceInfo {
     this.number,
     this.language,
   });
+
+  @override
+  List<Object?> get props => [name, number, language];
 }
 
-class BookDocumentInfo {
+class BookDocumentInfo with EquatableMixin {
   final List<BookAuthor> authors;
   final String? programUsed;
   final BookDate date;
@@ -82,9 +106,22 @@ class BookDocumentInfo {
     this.history,
     this.publishers = const [],
   });
+
+  @override
+  List<Object?> get props => [
+        authors,
+        programUsed,
+        date,
+        sourceUrl,
+        sourceOcr,
+        id,
+        version,
+        history,
+        publishers
+      ];
 }
 
-class BookPublishInfo {
+class BookPublishInfo with EquatableMixin {
   final String? bookName;
   final String? publisher;
   final String? city;
@@ -100,4 +137,7 @@ class BookPublishInfo {
     this.isbn,
     this.sequence = const [],
   });
+
+  @override
+  List<Object?> get props => [bookName, publisher, city, year, isbn, sequence];
 }

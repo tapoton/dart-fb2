@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   xml: ^5.1.0
+  equatable: ^2.0.0
 
 dev_dependencies:
   flutter_test:

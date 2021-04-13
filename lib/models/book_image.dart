@@ -1,4 +1,6 @@
-class BookImage {
+import 'package:equatable/equatable.dart';
+
+class BookImage with EquatableMixin {
   final String? type;
   final String href;
   final String? alt;
@@ -12,4 +14,7 @@ class BookImage {
     required this.href,
     this.id,
   });
+
+  @override
+  List<Object?> get props => [type, title, alt, href, id];
 }

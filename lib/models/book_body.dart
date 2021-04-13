@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import './book_annotation.dart';
 import './book_cite.dart';
 import './book_empty_line.dart';
@@ -10,7 +12,7 @@ import './book_table.dart';
 import './book_title.dart';
 import '../utils/one_of.dart';
 
-class BookBody {
+class BookBody with EquatableMixin {
   final String? name;
   final String? language;
   final BookImage? image;
@@ -26,9 +28,13 @@ class BookBody {
     this.epigraphs = const [],
     required this.sections,
   });
+
+  @override
+  List<Object?> get props =>
+      [name, language, image, title, epigraphs, sections];
 }
 
-class BookBodySection {
+class BookBodySection with EquatableMixin {
   final String? id;
   final String? language;
   final BookTitle? title;
@@ -47,6 +53,10 @@ class BookBodySection {
     this.annotation,
     this.content = const OneOf2([], null),
   });
+
+  @override
+  List<Object?> get props =>
+      [id, language, image, title, epigraphs, annotation, content];
 }
 
 class BookBodySectionFormattedTextElement extends OneOf7<BookSubtitle,

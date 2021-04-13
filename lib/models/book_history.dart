@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 import './book_cite.dart';
 import './book_empty_line.dart';
 import './book_paragraph.dart';
@@ -18,7 +20,7 @@ class BookHistoryElement extends OneOf6<BookParagraph, BookPoem, BookCite,
   }) : super(paragraph, poem, cite, subtitle, emptyLine, table);
 }
 
-class BookHistory {
+class BookHistory with EquatableMixin {
   final List<BookHistoryElement> elements;
 
   const BookHistory(this.elements);
@@ -27,4 +29,7 @@ class BookHistory {
   String toString() {
     return elements.join('\n');
   }
+
+  @override
+  List<Object?> get props => [elements];
 }

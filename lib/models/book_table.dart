@@ -1,25 +1,33 @@
+import 'package:equatable/equatable.dart';
+
 import './book_formatted_text.dart';
 import '../utils/one_of.dart';
 
-class BookTable {
+class BookTable with EquatableMixin {
   final String? id;
   final String? style;
   final List<BookTableRow> rows;
 
   const BookTable({this.id, this.style, required this.rows});
+
+  @override
+  List<Object?> get props => [id, style, rows];
 }
 
 enum BookTableHorizontalAlignment { left, right, center }
 enum BookTableVerticalAlignment { top, middle, bottom }
 
-class BookTableRow {
+class BookTableRow with EquatableMixin {
   final BookTableHorizontalAlignment? alignment;
   final List<OneOf2<BookTableHeader, BookTableDataCell>> elements;
 
   const BookTableRow({this.alignment, this.elements = const []});
+
+  @override
+  List<Object?> get props => [alignment, elements];
 }
 
-class BookTableHeader {
+class BookTableHeader with EquatableMixin {
   final String? id;
   final String? style;
   final int? colspan;
@@ -39,9 +47,21 @@ class BookTableHeader {
     this.language,
     this.text = const [],
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        style,
+        colspan,
+        rowspan,
+        horizontalAlignment,
+        verticalAlignment,
+        language,
+        text,
+      ];
 }
 
-class BookTableDataCell {
+class BookTableDataCell with EquatableMixin {
   final String? id;
   final String? style;
   final int? colspan;
@@ -61,4 +81,16 @@ class BookTableDataCell {
     this.language,
     this.text = const [],
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        style,
+        colspan,
+        rowspan,
+        horizontalAlignment,
+        verticalAlignment,
+        language,
+        text,
+      ];
 }
