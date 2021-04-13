@@ -1,7 +1,8 @@
 import 'package:fb2/models/book_formatted_text.dart';
 import 'package:fb2/models/book_image.dart';
 import 'package:fb2/models/book_paragraph.dart';
-import 'package:fb2/parsing/xml_parsing.dart';
+import 'package:fb2/parsing/book_image_parsing.dart';
+import 'package:fb2/parsing/book_paragraph_parsing.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xml/xml.dart';
 
