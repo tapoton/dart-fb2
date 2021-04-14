@@ -17,6 +17,11 @@ class BookTable with EquatableMixin {
 enum BookTableHorizontalAlignment { left, right, center }
 enum BookTableVerticalAlignment { top, middle, bottom }
 
+class BookTableRowElement extends OneOf2<BookTableHeader, BookTableDataCell> {
+  BookTableRowElement.header(BookTableHeader? header) : super(header, null);
+  BookTableRowElement.dataCell(BookTableDataCell? cell) : super(null, cell);
+}
+
 class BookTableRow with EquatableMixin {
   final BookTableHorizontalAlignment? alignment;
   final List<OneOf2<BookTableHeader, BookTableDataCell>> elements;
@@ -35,18 +40,21 @@ class BookTableHeader with EquatableMixin {
   final BookTableHorizontalAlignment horizontalAlignment;
   final BookTableVerticalAlignment verticalAlignment;
   final String? language;
-  final List<BookFormattedText> text;
+  final List<BookFormattedTextContent> text;
 
   const BookTableHeader({
     this.id,
     this.style,
     this.colspan,
     this.rowspan,
-    this.horizontalAlignment = BookTableHorizontalAlignment.left,
-    this.verticalAlignment = BookTableVerticalAlignment.top,
+    BookTableHorizontalAlignment? horizontalAlignment,
+    BookTableVerticalAlignment? verticalAlignment,
     this.language,
     this.text = const [],
-  });
+  })  : this.horizontalAlignment =
+            horizontalAlignment ?? BookTableHorizontalAlignment.left,
+        this.verticalAlignment =
+            verticalAlignment ?? BookTableVerticalAlignment.top;
 
   @override
   List<Object?> get props => [
@@ -69,19 +77,21 @@ class BookTableDataCell with EquatableMixin {
   final BookTableHorizontalAlignment horizontalAlignment;
   final BookTableVerticalAlignment verticalAlignment;
   final String? language;
-  final List<BookFormattedText> text;
+  final List<BookFormattedTextContent> text;
 
   const BookTableDataCell({
     this.id,
     this.style,
     this.colspan,
     this.rowspan,
-    this.horizontalAlignment = BookTableHorizontalAlignment.left,
-    this.verticalAlignment = BookTableVerticalAlignment.top,
+    BookTableHorizontalAlignment? horizontalAlignment,
+    BookTableVerticalAlignment? verticalAlignment,
     this.language,
     this.text = const [],
-  });
-
+  })  : this.horizontalAlignment =
+            horizontalAlignment ?? BookTableHorizontalAlignment.left,
+        this.verticalAlignment =
+            verticalAlignment ?? BookTableVerticalAlignment.top;
   @override
   List<Object?> get props => [
         id,

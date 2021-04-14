@@ -1,13 +1,13 @@
 import 'package:xml/xml.dart';
 
 import './book_text_parsing.dart';
-import '../models/book_paragraph.dart';
+import '../models/book_subtitle.dart';
 
-class BookParagraphParser {
-  static BookParagraph parse(XmlElement element) {
+class BookSubtitleParser {
+  static BookSubtitle parse(XmlElement element) {
     final content =
         element.children.map(BookFormattedTextContentParser.parse).toList();
-    return BookParagraph(
+    return BookSubtitle(
       id: element.getAttribute('id'),
       style: element.getAttribute('style'),
       language: element.getAttribute('xml:lang'),

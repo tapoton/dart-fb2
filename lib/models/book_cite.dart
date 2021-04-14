@@ -8,16 +8,20 @@ import './book_table.dart';
 import '../utils/one_of.dart';
 
 class BookCite with EquatableMixin {
+  final String? id;
+  final String? language;
   final List<BookCiteContent> content;
-  final List<BookParagraph> textAuthor;
+  final List<BookParagraph> textAuthors;
 
   const BookCite({
+    this.id,
+    this.language,
     required this.content,
-    this.textAuthor = const [],
+    this.textAuthors = const [],
   });
 
   @override
-  List<Object?> get props => [content, textAuthor];
+  List<Object?> get props => [id, language, content, textAuthors];
 }
 
 class BookCiteContent extends OneOf5<BookParagraph, BookSubtitle, BookEmptyLine,

@@ -4,9 +4,9 @@ import './book_image_parsing.dart';
 import '../models/book_formatted_text.dart';
 
 class BookFormattedTextParser {
-  static BookFormattedText? tryParse(XmlElement element) {
+  static BookFormattedText? parse(XmlElement element) {
     final childContent =
-        element.children.map(BookFormattedTextContentParser.tryParse).toList();
+        element.children.map(BookFormattedTextContentParser.parse).toList();
 
     switch (element.name.qualified) {
       case 'strong':
@@ -22,8 +22,12 @@ class BookFormattedTextParser {
       case 'code':
         return BookCodeText(childContent);
       case 'style':
+        final name = element.getAttribute('name');
+        if (name == null) {
+          return null;
+        }
         return BookStyledText(
-          name: element.getAttribute('name')!,
+          name: name,
           language: element.getAttribute('xml:lang'),
           contents: childContent,
         );
@@ -42,7 +46,7 @@ class BookFormattedTextParser {
 }
 
 class BookFormattedTextContentParser {
-  static BookFormattedTextContent tryParse(XmlNode node) {
+  static BookFormattedTextContent parse(XmlNode node) {
     if (node is XmlText) {
       return BookFormattedTextContent(text: node.text);
     }
@@ -50,12 +54,12 @@ class BookFormattedTextContentParser {
     if (node is XmlElement) {
       if (node.name.local == 'image') {
         return BookFormattedTextContent(
-          image: BookImageParser.tryParse(node),
+          image: BookImageParser.parse(node),
         );
       }
 
       return BookFormattedTextContent(
-        formattedText: BookFormattedTextParser.tryParse(node),
+        formattedText: BookFormattedTextParser.parse(node),
       );
     }
 

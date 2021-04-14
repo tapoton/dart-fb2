@@ -14,7 +14,7 @@ class BookPoem with EquatableMixin {
   final BookTitle? title;
   final List<BookEpigraph> epigraphs;
   final List<BookPoemStanza> stanza;
-  final List<BookParagraph> textAuthor;
+  final List<BookParagraph> textAuthors;
   final BookDate? date;
 
   const BookPoem({
@@ -23,13 +23,13 @@ class BookPoem with EquatableMixin {
     this.title,
     this.epigraphs = const [],
     required this.stanza,
-    this.textAuthor = const [],
+    this.textAuthors = const [],
     this.date,
   });
 
   @override
   List<Object?> get props =>
-      [id, language, title, epigraphs, stanza, textAuthor, date];
+      [id, language, title, epigraphs, stanza, textAuthors, date];
 }
 
 class BookPoemStanza with EquatableMixin {

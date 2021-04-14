@@ -5,8 +5,8 @@ class BookAuthor with EquatableMixin {
   final String? middleName;
   final String? lastName;
   final String? nickname;
-  final List<String> homepage;
-  final List<String> email;
+  final List<String> homepages;
+  final List<String> emails;
   final String? id;
 
   const BookAuthor({
@@ -14,12 +14,12 @@ class BookAuthor with EquatableMixin {
     this.middleName,
     this.lastName,
     this.nickname,
-    this.homepage = const [],
-    this.email = const [],
+    this.homepages = const [],
+    this.emails = const [],
     this.id,
   });
 
   @override
   List<Object?> get props =>
-      [firstName, middleName, lastName, nickname, homepage, email, id];
+      [firstName, middleName, lastName, nickname, homepages, emails, id];
 }

@@ -21,9 +21,15 @@ class BookHistoryElement extends OneOf6<BookParagraph, BookPoem, BookCite,
 }
 
 class BookHistory with EquatableMixin {
+  final String? id;
+  final String? language;
   final List<BookHistoryElement> elements;
 
-  const BookHistory(this.elements);
+  const BookHistory({
+    this.id,
+    this.language,
+    this.elements = const [],
+  });
 
   @override
   String toString() {

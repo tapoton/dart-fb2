@@ -9,23 +9,23 @@ import '../utils/one_of.dart';
 class BookEpigraph with EquatableMixin {
   final String? id;
   final List<BookEpigraphPart> parts;
-  final List<BookParagraph> textAuthor;
+  final List<BookParagraph> textAuthors;
 
   const BookEpigraph({
     this.id,
     this.parts = const [],
-    this.textAuthor = const [],
+    this.textAuthors = const [],
   });
 
   @override
   String toString() {
-    return [parts.join('\n'), textAuthor.join('\n')]
+    return [parts.join('\n'), textAuthors.join('\n')]
         .where((text) => text.isNotEmpty)
         .join('\n');
   }
 
   @override
-  List<Object?> get props => [id, parts, textAuthor];
+  List<Object?> get props => [id, parts, textAuthors];
 }
 
 class BookEpigraphPart

@@ -21,7 +21,7 @@ void main() {
     final xmlFictionBook = document.getElement('FictionBook')!;
     final xmlImage = xmlFictionBook.getElement('image')!;
 
-    final image = BookImageParser.tryParse(xmlImage);
+    final image = BookImageParser.parse(xmlImage);
 
     expect(image.href, '#picture.jpg');
     expect(image.id, null);
@@ -43,7 +43,7 @@ void main() {
     final xmlFictionBook = document.getElement('FictionBook')!;
     final xmlParagraph = xmlFictionBook.getElement('p')!;
 
-    final paragraph = BookParagraphParser.tryParse(xmlParagraph);
+    final paragraph = BookParagraphParser.parse(xmlParagraph);
 
     expect(
       paragraph,
